@@ -1,0 +1,156 @@
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    background-color: aqua;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.collapsible:hover {
+    background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+.toCheckoutBtn {
+    background-color: rgb(0, 200, 74);
+    border-color: rgb(255, 255, 255);
+    border-bottom-width: 0px;
+    border-radius: 10px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    font-stretch: 100%;
+    color: white;
+    padding: 0px 20px 0px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 382px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.toCheckoutBtn:hover {
+    background-color: #00a93e;
+  }
+
+.buy-button {
+    background-color: rgb(0, 200, 74);
+    border-color: rgb(255, 255, 255);
+    border-bottom-width: 0px;
+    border-radius: 10px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    font-stretch: 100%;
+    color: white;
+    padding: 0px 20px 0px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 382px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .buy-button:hover {
+    background-color: #00a93e;
+  }
+
+  .icon-cart {
+    background: url(icons-cart-22.png) no-repeat;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 135px;
+    top: center;
+  }
+
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
