@@ -11,24 +11,52 @@
 <body>
   <button id="buyButton" class="buy-button"><span class="icon-cart"> </span>Купити</button>
 
-  <!-- The Modal -->
   <div id="myModal" class="modal">
-
-    <!-- Modal content -->
     <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>Modal Header</h2>
+      <header class="modal-header">
+        <div class="modal-title">Кошик</div>
+        <div tabindex="0" class="close">&times;</div>
+      </header>
+      <div class="cart-order">
+      <header class="modal-order__header">
+        <header class="checkout-seller">
+          <div class="seller-logo">
+            <a href="https://synthetic.ua/seller/one-shop" class="chekout-seller__logo">
+            <img src="One-shop logo.png" title="ONE-shop" alt="ONE-shop" class="image">
+          </a>
+          </div>
+          <div class="checkout-seller__info">
+        <p title="ONE-shop" class="checkout-seller__name">
+          <span>Продавець:</span> 
+          <a href="https://synthetic.ua/seller/one-shop" class="link"> ONE-shop </a>
+        </p>
+        <p class="checkout-seller__shipment">
+          <span>Відправка з:</span>
+          м. Луцьк
+        </p>
       </div>
+      </header>
+      <div class="cart-cashback">
+        Замовте сьогодні - отримайте<strong class="cart-cashback__bonuses"> + 10 бонусів</strong>
+      </div>
+      </div>
+      </header>
       <div class="modal-body">
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
+        <p>Item Info</p>
+        <p>Nubmers</p>
       </div>
-      <button type="button" class="collapsible">Open Collapsible</button>
+      <button type="button" class="collapsible">Bonus amount or discount</button>
       <div class="content">
-        <p>Lorem ipsum...</p>
+        <div class="range-slider">
+          <p>Bonus Info</p>
+          <p>range-slider</p>
+        </div>
       </div>
-      <button id="toCheckoutBtn" class="toCheckoutBtn">Оформити замовлення</button>
+      <footer class="cart-order__footer">
+        <div class="final-price">Final Price</div>
+        <button id="toCheckoutBtn" class="toCheckoutBtn">Оформити замовлення</button>
+      </footer>
+    </div>
     </div>
 
 

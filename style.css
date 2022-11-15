@@ -1,4 +1,4 @@
-/* The Modal (background) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .modal {
   display: none;
@@ -18,27 +18,50 @@
 
 /* Modal Content/Box */
 .modal-content {
+  box-sizing: border-box;
   background-color: #fefefe;
   margin: 15% auto;
   /* 15% from the top and centered */
-  padding: 20px;
+  padding: 20px 16px 100px;
   border: 1px solid #888;
   max-width: 1020px;
+  position: relative;
   /* Could be more or less, depending on screen size */
 }
 
 .modal-header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  margin-bottom: 5px;
+  justify-content: center;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+.modal-title {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  display: block;
 }
 
 /* The Close Button */
 .close {
+  box-sizing: border-box;
+  position: absolute;
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  line-height: 20px;
+ padding: 5px;
+ display: block;
+ right: 25px;
 }
 
 .close:hover,
@@ -48,9 +71,112 @@
   cursor: pointer;
 }
 
+.modal-order__header {
+  margin-bottom: 5px;
+  padding: 12px 0px;
+}
+
+.checkout-seller {
+  box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  line-height: 20px;
+  height: 40px;
+}
+
+.chekout-seller__logo {
+box-sizing: border-box;
+cursor: pointer;
+display: block;
+height: 40px;
+width: 40px;
+text-align: left;
+line-height: 20px;
+
+}
+
+.seller-logo {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  text-size-adjust: 100%;
+  margin-right: 12px;
+}
+.image {
+  height: 40px;
+  width: 40px;
+  position: inherit;
+}
+
+.checkout-seller__info {
+  box-sizing: border-box;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+.checkout-seller__name {
+  box-sizing: border-box;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  margin: 0px 0px 2px;
+}
+.checkout-seller__name span {
+  color: #8a8a8a;
+}
+
+.checkout-seller__shipment {
+  box-sizing: border-box;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  margin: 0px 0px 2px;
+  color: #8a8a8a;
+
+}
+
+.checkout-seller__shipment span {
+  color: #8a8a8a;
+}
+
+.cart-cashback {
+  box-sizing: border-box;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  margin: 12px 0px 0px;
+}
+
+.cart-cashback__bonuses {
+  color: #00a93e;
+}
+
 .modal-body {
-  padding: 2px 16px;
-  background-color: aqua;
+  border-top: #8a8a8abb solid 1px;
+  border-bottom: #8a8a8abb solid 1px;
+  margin-bottom: 5px;
 }
 
 /* Style the button that is used to open and close the collapsible content */
@@ -64,6 +190,8 @@
   text-align: left;
   outline: none;
   font-size: 15px;
+  border: #444 solid 2px;
+  margin-bottom: 5px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -78,6 +206,12 @@
   display: none;
   overflow: hidden;
   background-color: #f1f1f1;
+  border: #444 solid 2px;
+  margin-bottom: 5px;
+}
+
+.cart-order__footer {
+  border: #444 solid 2px;
 }
 
 .toCheckoutBtn {
@@ -103,7 +237,7 @@
   align-items: center;
   justify-content: center;
   height: 48px;
-  width: 236px;
+  width: 360px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -151,17 +285,6 @@
   top: center;
 }
 
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0
-  }
-
-  to {
-    top: 0;
-    opacity: 1
-  }
-}
 
 @media screen and (min-width: 800px) {
   .toCheckoutBtn {
@@ -169,3 +292,9 @@
     width: 382px;
   }
 }
+@media screen and (max-width: 800px) {
+.modal-content {
+  margin: 0% auto;
+}
+}
+
