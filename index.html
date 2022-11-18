@@ -50,7 +50,7 @@
           </figure>
           <div class="cart-item__offer">
             <p class="cart-item__code">Код пропозиції: CS0TEST0N</p>
-            <p class="cart-item__name-wrap">Дитяча караоке система NoNameBrand білого кольору</p>
+            <p class="cart-item__name-wrap"><span class="cart-item__name">Дитяча караоке система NoNameBrand білого кольору</span></p>
           </div>
         </div>
         <div class="cart-item__qty">
@@ -58,7 +58,7 @@
             <button class="count__decrement">
               <span class="minus">-</span>
             </button>
-            <input type="number" class="count__input">
+            <input type="number" class="count__input" value="1">
             <button class="count__increment">
               <span class="plus">+</span>
             </button>
@@ -78,17 +78,25 @@
         </div>
       </div>
       </div>
-      <button type="button" class="collapsible">Bonus amount or discount</button>
+      <button type="button" class="collapsible">
+        <span>Оплата бонусами до</span>
+        <span class="collapsible-text__color">99%</span>
+      </button>
       <div class="content">
         <div class="range-slider">
           <p>Bonus Info</p>
           <p>range-slider</p>
         </div>
       </div>
-      <footer class="cart-order__footer">
-        <div class="final-price">Final Price</div>
+      <div class="cart-order__footer">
+        <div class="cart-order__footer-content">
+          <div class="card-order__total">
+            <span>Всього:</span>
+            <span class="cart-order__total-price">1 499 ГРН</span>
+          </div>
         <button id="toCheckoutBtn" class="toCheckoutBtn">Оформити замовлення</button>
-      </footer>
+      </div>
+    </div>
     </div>
     </div>
 
