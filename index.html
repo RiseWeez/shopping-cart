@@ -11,72 +11,73 @@
 <body>
   <button id="buyButton" class="buy-button"><span class="icon-cart"> </span>Купити</button>
 
-  <div id="myModal" class="modal">
+  <div id="cartModal" class="modal">
     <div class="modal-content">
       <header class="modal-header">
         <div class="modal-title">Кошик</div>
         <div tabindex="0" class="close">&times;</div>
       </header>
       <div class="cart-order">
-      <header class="modal-order__header">
-        <header class="checkout-seller">
-          <div class="seller-logo">
-            <a href="https://synthetic.ua/seller/one-shop" class="chekout-seller__logo">
-            <img src="One-shop logo.png" title="ONE-shop" alt="ONE-shop" class="image">
-          </a>
+        <header class="modal-order__header">
+          <header class="checkout-seller">
+            <div class="seller-logo">
+              <a href="https://synthetic.ua/seller/one-shop" class="chekout-seller__logo">
+                <img src="One-shop logo.png" title="ONE-shop" alt="ONE-shop" class="image">
+              </a>
+            </div>
+            <div class="checkout-seller__info">
+              <p title="ONE-shop" class="checkout-seller__name">
+                <span>Продавець:</span>
+                <a href="https://synthetic.ua/seller/one-shop" class="link"> ONE-shop </a>
+              </p>
+              <p class="checkout-seller__shipment">
+                <span>Відправка з:</span>
+                м. Луцьк
+              </p>
+            </div>
+          </header>
+          <div class="cart-cashback">
+            Замовте сьогодні - отримайте<strong class="cart-cashback__bonuses"> + 10 бонусів</strong>
+            за покупку
           </div>
-          <div class="checkout-seller__info">
-        <p title="ONE-shop" class="checkout-seller__name">
-          <span>Продавець:</span> 
-          <a href="https://synthetic.ua/seller/one-shop" class="link"> ONE-shop </a>
-        </p>
-        <p class="checkout-seller__shipment">
-          <span>Відправка з:</span>
-          м. Луцьк
-        </p>
-      </div>
-      </header>
-      <div class="cart-cashback">
-        Замовте сьогодні - отримайте<strong class="cart-cashback__bonuses"> + 10 бонусів</strong>
-        за покупку
-      </div>
       </div>
       </header>
       <div class="cart-order__content">
         <div class="cart-item">
-        <div class="cart-item__about">
-          <figure class="cart-item__img">
-            <img src="productimg.jpg" alt="product-image" class="cart-item__img-img">
-          </figure>
-          <div class="cart-item__offer">
-            <p class="cart-item__code">Код пропозиції: CS0TEST0N</p>
-            <p class="cart-item__name-wrap"><span class="cart-item__name">Дитяча караоке система NoNameBrand білого кольору</span></p>
+          <div class="cart-item__about">
+            <figure class="cart-item__img">
+              <img src="productimg.jpg" alt="product-image" class="cart-item__img-img">
+            </figure>
+            <div class="cart-item__offer">
+              <p class="cart-item__code">Код пропозиції: CS0TEST0N</p>
+              <p class="cart-item__name-wrap"><span class="cart-item__name">Дитяча караоке система NoNameBrand білого
+                  кольору</span></p>
+            </div>
+          </div>
+          <div class="cart-item__qty">
+            <div class="count">
+              <button class="count__decrement">
+                <span class="minus">-</span>
+              </button>
+              <input type="number" class="count__input" value="1">
+              <button class="count__increment">
+                <span class="plus">+</span>
+              </button>
+            </div>
+          </div>
+          <div class="cart-item__price">
+            <div class="cart-price">
+              <p class="cart-price__title">Ціна</p>
+              <p class="cart-price__value">1 499 ГРН</p>
+            </div>
+          </div>
+          <div class="cart-item__total">
+            <div class="cart-price">
+              <p class="cart-price__title">Сума</p>
+              <p class="cart-price__value">1 499 ГРН</p>
+            </div>
           </div>
         </div>
-        <div class="cart-item__qty">
-          <div class="count">
-            <button class="count__decrement">
-              <span class="minus">-</span>
-            </button>
-            <input type="number" class="count__input" value="1">
-            <button class="count__increment">
-              <span class="plus">+</span>
-            </button>
-          </div>
-        </div>
-        <div class="cart-item__price">
-          <div class="cart-price">
-            <p class="cart-price__title">Ціна</p>
-            <p class="cart-price__value">1 499 ГРН</p>
-          </div>
-        </div>
-        <div class="cart-item__total">
-          <div class="cart-price">
-            <p class="cart-price__title">Сума</p>
-            <p class="cart-price__value">1 499 ГРН</p>
-          </div>
-        </div>
-      </div>
       </div>
       <button type="button" class="collapsible">
         <span>Оплата бонусами до</span>
@@ -84,21 +85,64 @@
       </button>
       <div class="content">
         <div class="range-slider">
-          <p>Bonus Info</p>
-          <p>range-slider</p>
+          <!-- Slider -->
+          <div class="discount-modal__list">
+            <span class="discount-modal__name">Ціна без бонусів:</span>
+            <span class="discount-modal__price">
+              <span id="itemPrice"></span>
+              <sup class="discount-modal__currency">ГРН</sup>
+            </span>
+            <span class="discount-modal__name">Обрані бонуси:</span>
+            <span class="discount-modal__price"><span id="bonusValue"></span>
+              <span class="icon-synthetic"></span>
+              <!-- <span class="discount-modal__price-currency">
+                (
+                <span id="currencyValue"></span>
+                <sup class="discount-modal__currency">ГРН</sup>
+                )
+              </span> -->
+            </span>
+            <label class="bonusValueInput">Кількість бонусів
+              <input type="number" id="bonusValueInput" name="bonusValueInput">
+            </label>
+            <span class="discount-modal__name">Макс. допустима знижка:</span>
+            <span class="discount-modal__price">
+              <span id="maxDiscount"></span>
+              <sup class="discount-modal__currency">ГРН</sup>
+            </span>
+            <span class="discount-modal__total-title">Ціна до оплати: </span>
+            <strong class="discount-modal__total-price"><span id="withBonusPrice"></span>
+              <sup class="discount-modal__currency">ГРН</sup>
+            </strong>
+            </p>
+          </div>
+
+          <div class="slider" id="slider">
+            <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="999999"
+              onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
+          </div>
+          <!-- Slider -->
         </div>
       </div>
       <div class="cart-order__footer">
         <div class="cart-order__footer-content">
-          <div class="card-order__total">
+          <p class="discount-modal_total">
+            <span class="discount-modal__total-title">Всього до сплати: </span>
+            <strong class="discount-modal__total-price"><span id="finalPrice"></span>
+              <sup class="discount-modal__currency">ГРН</sup>
+              <!-- +
+              <span id="discountBonusValue">0</span> -->
+            </strong>
+          </p>
+          <!-- <div class="card-order__total">
             <span>Всього:</span>
             <span class="cart-order__total-price">1 499 ГРН</span>
-          </div>
-        <button id="toCheckoutBtn" class="toCheckoutBtn">Оформити замовлення</button>
+          </div> -->
+          <button id="toCheckoutBtn" class="toCheckoutBtn">Оформити замовлення</button>
+        </div>
       </div>
     </div>
-    </div>
-    </div>
+  </div>
 
 
 
@@ -107,5 +151,3 @@
 </body>
 
 </html>
-
-
