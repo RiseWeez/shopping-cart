@@ -37,15 +37,14 @@ for (i = 0; i < coll.length; i++) {
 
 // range slider
 
-let bonusValue = 500;
+let bonusValue = 250;
 let maxDiscount = 1498;
 let itemPrice = 1499;
-// let currencyValue = bonusValue;
 
-document.getElementById('bonusValue').innerHTML = bonusValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-// document.getElementById('currencyValue').innerHTML = currencyValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+// document.getElementById('bonusValue').innerHTML = bonusValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+document.getElementById('bonusValueInput').innerHTML = bonusValue
 
 function rangeSlide(value) {
   const priceDiff = itemPrice - value;
@@ -57,8 +56,10 @@ function rangeSlide(value) {
   // document.getElementById('selectedDiscount').style.color = '#00a93e';
   // document.getElementById('discountBonusValue').style.color = '#00a93e';
 
-  if (value > bonusValue) {
+  if (value <= bonusValue) {
     withBonusPrice.style.color = '#00a93e';
+  } else {
+    withBonusPrice.style.color = 'red'
   }
 }
 
@@ -71,20 +72,20 @@ window.onload = function setSliderRange() {
   target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%';
 };
 
-// bonusValueInput.onchange = function changeBonusValue() {
-//   let bonusValueInput = document.getElementById('bonusValueInput').value;
-//   document.getElementById('bonusValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-//   // document.getElementById('currencyValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-//   // currencyValue = bonusValue;
-//   bonusValue = +bonusValueInput;
+bonusValueInput.onchange = function changeBonusValue() {
+  let bonusValueInput = document.getElementById('bonusValueInput').value;
+  // document.getElementById('bonusValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  // document.getElementById('currencyValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  // currencyValue = bonusValue;
+  bonusValue = +bonusValueInput;
 
-//   let target = document.querySelectorAll('input[type="range"]')[0];
-//   target.value = bonusValueInput;
-//   let min = target.min;
-//   target.max = maxDiscount;
+  let target = document.querySelectorAll('input[type="range"]')[0];
+  target.value = bonusValueInput;
+  let min = target.min;
+  target.max = maxDiscount;
 
-//   target.style.backgroundSize = ((bonusValueInput - min) * 100) / (maxDiscount - min) + '% 100%';
-// };
+  target.style.backgroundSize = ((bonusValueInput - min) * 100) / (maxDiscount - min) + '% 100%';
+};
 
 const input = document.querySelector('.range');
 
