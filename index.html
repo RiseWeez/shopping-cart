@@ -101,7 +101,7 @@
               <div>
               <span class="selectedBonusesInp">Обрані бонуси</span>
             </div>
-              <input type="number" id="bonusValueInput" name="bonusValueInput" class="bonusValueInputInp" value="250">
+              <input type="number" id="bonusValueInput" name="bonusValueInput" class="bonusValueInputInp" value="200">
             </div>
             <div class="equal-price">
               <span class="eq-price">=</span>
@@ -114,13 +114,22 @@
             </strong>
           </div>
           </div>
-
+          <div id="results" class="result">
+            <span id="onLoadResult"></span>
+            <!-- <span id="notEnoughBonus"></span>
+            <span id="noBonusRes"></span>
+            <span id="overMaxDiscount"></span> -->
+          </div>
           <div class="slider" id="slider">
             <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="999999"
               onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
           </div>
+          <span class="discount-modal__zero-bonus">
+            <span id="zeroBonus">0</span>
+          </span>
             <span class="discount-modal__price">
               <span id="maxDiscount"></span>
+              
               <!-- <sup class="discount-modal__currency">ГРН</sup> -->
             </span>
           <!-- Slider -->

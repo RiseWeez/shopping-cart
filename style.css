@@ -506,8 +506,8 @@ input[type="range"] {
   width: 380px;
   height: 6px;
   background: #8d898985;
-  background-image: linear-gradient(#00a93e, #00a93e); /* linear-gradient(#ea373785, #ea373785); */
-  background-size: 5%;
+  background-image: linear-gradient(#00a93e, #00a93e); /* linear-gradient(#ea373785, #ea373785), */
+  background-size: 50%;
   background-repeat: no-repeat;
   margin-bottom: 10px;
 }

@@ -19,7 +19,7 @@ window.onclick = function (event) {
   }
 };
 
-// collapsible slider
+// collapsible element
 const coll = document.getElementsByClassName('collapsible');
 let i;
 
@@ -37,14 +37,18 @@ for (i = 0; i < coll.length; i++) {
 
 // range slider
 
-let bonusValue = 250;
-let maxDiscount = 1498;
-let itemPrice = 1499;
+let bonusValue = 1000;
+let maxDiscount = 1500;
+let itemPrice = 2000;
+let onLoadResult = 'Drag slider to get your discount'
+
 
 // document.getElementById('bonusValue').innerHTML = bonusValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('bonusValueInput').innerHTML = bonusValue
+document.getElementById('onLoadResult').innerHTML = onLoadResult
+
 
 function rangeSlide(value) {
   const priceDiff = itemPrice - value;
@@ -70,6 +74,7 @@ window.onload = function setSliderRange() {
   target.max = itemPrice;
 
   target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%';
+  target.style.backgroundColor = '#ea373785'
 };
 
 bonusValueInput.onchange = function changeBonusValue() {
@@ -82,13 +87,102 @@ bonusValueInput.onchange = function changeBonusValue() {
   let target = document.querySelectorAll('input[type="range"]')[0];
   target.value = bonusValueInput;
   let min = target.min;
-  target.max = maxDiscount;
+  target.max = itemPrice;
 
-  target.style.backgroundSize = ((bonusValueInput - min) * 100) / (maxDiscount - min) + '% 100%';
+  target.style.backgroundSize = ((bonusValueInput - min) * 100) / (itemPrice - min) + '% 100%'; 
 };
 
 const input = document.querySelector('.range');
 
-input.addEventListener('change', () => {
-  if (input.value > bonusValue) input.value = bonusValue;
-});
+input.addEventListener('input', overMaxDiscountFunc);
+input.addEventListener('input', noBonusResFunc);
+input.addEventListener('input', notEnoughBonusFunc);
+
+function overMaxDiscountFunc() {
+  let overMaxDiscount = 'Over Max Discount'
+  const y = document.getElementById('onLoadResult');
+  if (input.value > maxDiscount && y.innerHTML === onLoadResult) {
+    y.innerHTML = overMaxDiscount;
+  } else if (input.value < maxDiscount) {
+    y.innerHTML = onLoadResult;
+  }
+}
+
+function noBonusResFunc() {
+  let noBonusRes = 'Your Balance is 0'
+  const x = document.getElementById('onLoadResult');
+  if (input.value == 0 && x.innerHTML === onLoadResult) {
+    x.innerHTML = noBonusRes
+  } else if (input.value !== 0) {
+    x.innerHTML = onLoadResult
+  }
+}
+
+function notEnoughBonusFunc() {
+  let notEnoughBonus = 'Not Enough Bonuses'
+  const z = document.getElementById('onLoadResult');
+  if (input.value > bonusValue && z.innerHTML === onLoadResult) {
+    z.innerHTML = notEnoughBonus;
+  } else if (input.value < bonusValue) {
+    z.innerHTML = onLoadResult;
+  }  
+}
+
+// input.addEventListener('input', () => {
+//   let overMaxDiscount = 'Over Max Discount'
+//   const y = document.getElementById('onLoadResult');
+//   if (input.value > maxDiscount && y.innerHTML === onLoadResult) {
+//     y.innerHTML = overMaxDiscount;
+//   } else if (input.value < maxDiscount) {
+//     y.innerHTML = onLoadResult;
+//   }
+// });
+
+// input.addEventListener('input', () => {
+//   let noBonusRes = 'Your Balance is 0'
+//   const x = document.getElementById('onLoadResult');
+//   if (input.value == 0 && x.innerHTML === onLoadResult) {
+//     x.innerHTML = noBonusRes
+//   } else if (input.value !== 0) {
+//     x.innerHTML = onLoadResult
+//   }
+// })
+
+// input.addEventListener('input', () => {
+//   let notEnoughBonus = 'Not Enough Bonuses'
+//   const z = document.getElementById('onLoadResult');
+//   if (input.value > bonusValue && z.innerHTML === onLoadResult) {
+//     z.innerHTML = notEnoughBonus;
+//   } else if (input.value < bonusValue) {
+//     z.innerHTML = onLoadResult;
+//   }
+// })
+
+
+// input.addEventListener('input', () => {
+//   const x = document.getElementById('onLoadResult');
+
+//   let overMaxDiscount = 'Over Max Discount'
+//   if (input.value > maxDiscount && x.innerHTML === onLoadResult) {
+//     x.innerHTML = overMaxDiscount;
+//   } else if (input.value < maxDiscount) {
+//     x.innerHTML = onLoadResult;
+//   } 
+
+//   let noBonusRes = 'Your Balance is 0'
+//   if (input.value == 0 && x.innerHTML === onLoadResult) {
+//     x.innerHTML = noBonusRes
+//   } else if (input.value !== 0) {
+//     x.innerHTML = onLoadResult
+//   }
+
+//   let notEnoughBonus = 'Not Enough Bonuses'
+//   if (input.value > bonusValue && x.innerHTML === onLoadResult) {
+//     x.innerHTML = notEnoughBonus;
+//   } else if (input.value < bonusValue) {
+//     x.innerHTML = onLoadResult;
+//   }
+// });
+
+// document.querySelector('.range').removeEventListener('change', input)
+
