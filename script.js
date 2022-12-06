@@ -40,25 +40,18 @@ for (i = 0; i < coll.length; i++) {
 let bonusValue = 1000;
 let maxDiscount = 1500;
 let itemPrice = 2000;
-let onLoadResult = 'Drag slider to get your discount'
+let onLoadResult = 'Потягни повзунок та обери знижку'
 
 
-// document.getElementById('bonusValue').innerHTML = bonusValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-document.getElementById('bonusValueInput').innerHTML = bonusValue
 document.getElementById('onLoadResult').innerHTML = onLoadResult
 
 
 function rangeSlide(value) {
   const priceDiff = itemPrice - value;
-  // document.getElementById('selectedDiscount').innerHTML = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  // document.getElementById('discountBonusValue').innerHTML = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   document.getElementById('finalPrice').innerHTML = priceDiff.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   document.getElementById('withBonusPrice').innerHTML = priceDiff.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
-  // document.getElementById('selectedDiscount').style.color = '#00a93e';
-  // document.getElementById('discountBonusValue').style.color = '#00a93e';
 
   if (value <= bonusValue) {
     withBonusPrice.style.color = '#00a93e';
@@ -66,6 +59,16 @@ function rangeSlide(value) {
     withBonusPrice.style.color = 'red'
   }
 }
+
+const range = document.querySelector('.range');
+const field = document.querySelector('.bonusValueInputInp');
+
+range.addEventListener('change', function (e) {
+  field.value = e.target.value;
+});
+field.addEventListener('change', function (e) {
+  range.value = e.target.value;
+});
 
 window.onload = function setSliderRange() {
   let target = document.querySelectorAll('input[type="range"]')[0];
@@ -79,56 +82,23 @@ window.onload = function setSliderRange() {
 
 bonusValueInput.onchange = function changeBonusValue() {
   let bonusValueInput = document.getElementById('bonusValueInput').value;
-  // document.getElementById('bonusValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  // document.getElementById('currencyValue').innerHTML = bonusValueInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  // currencyValue = bonusValue;
-  bonusValue = +bonusValueInput;
+  let handleValue = +bonusValueInput
 
   let target = document.querySelectorAll('input[type="range"]')[0];
-  target.value = bonusValueInput;
-  let min = target.min;
+  target.value = handleValue;
+  let min = 0;
   target.max = itemPrice;
 
-  target.style.backgroundSize = ((bonusValueInput - min) * 100) / (itemPrice - min) + '% 100%'; 
+  target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%'; 
 };
 
 const input = document.querySelector('.range');
 
-input.addEventListener('input', overMaxDiscountFunc);
-input.addEventListener('input', noBonusResFunc);
-input.addEventListener('input', notEnoughBonusFunc);
+// input.addEventListener('input', overMaxDiscountFunc); 
+// input.addEventListener('change', noBonusResFunc);
+// input.addEventListener('input', notEnoughBonusFunc);
 
-function overMaxDiscountFunc() {
-  let overMaxDiscount = 'Over Max Discount'
-  const y = document.getElementById('onLoadResult');
-  if (input.value > maxDiscount && y.innerHTML === onLoadResult) {
-    y.innerHTML = overMaxDiscount;
-  } else if (input.value < maxDiscount) {
-    y.innerHTML = onLoadResult;
-  }
-}
-
-function noBonusResFunc() {
-  let noBonusRes = 'Your Balance is 0'
-  const x = document.getElementById('onLoadResult');
-  if (input.value == 0 && x.innerHTML === onLoadResult) {
-    x.innerHTML = noBonusRes
-  } else if (input.value !== 0) {
-    x.innerHTML = onLoadResult
-  }
-}
-
-function notEnoughBonusFunc() {
-  let notEnoughBonus = 'Not Enough Bonuses'
-  const z = document.getElementById('onLoadResult');
-  if (input.value > bonusValue && z.innerHTML === onLoadResult) {
-    z.innerHTML = notEnoughBonus;
-  } else if (input.value < bonusValue) {
-    z.innerHTML = onLoadResult;
-  }  
-}
-
-// input.addEventListener('input', () => {
+// function overMaxDiscountFunc() {
 //   let overMaxDiscount = 'Over Max Discount'
 //   const y = document.getElementById('onLoadResult');
 //   if (input.value > maxDiscount && y.innerHTML === onLoadResult) {
@@ -136,9 +106,9 @@ function notEnoughBonusFunc() {
 //   } else if (input.value < maxDiscount) {
 //     y.innerHTML = onLoadResult;
 //   }
-// });
+// }
 
-// input.addEventListener('input', () => {
+// function noBonusResFunc() {
 //   let noBonusRes = 'Your Balance is 0'
 //   const x = document.getElementById('onLoadResult');
 //   if (input.value == 0 && x.innerHTML === onLoadResult) {
@@ -146,37 +116,68 @@ function notEnoughBonusFunc() {
 //   } else if (input.value !== 0) {
 //     x.innerHTML = onLoadResult
 //   }
-// })
+// }
 
-// input.addEventListener('input', () => {
+// function notEnoughBonusFunc() {
 //   let notEnoughBonus = 'Not Enough Bonuses'
 //   const z = document.getElementById('onLoadResult');
 //   if (input.value > bonusValue && z.innerHTML === onLoadResult) {
 //     z.innerHTML = notEnoughBonus;
 //   } else if (input.value < bonusValue) {
 //     z.innerHTML = onLoadResult;
-//   }
-// })
+//   }  
+// }
+
+input.addEventListener('change', () => {
+  let percent = Math.floor((maxDiscount / itemPrice) * 100)
+  let overMaxDiscount = `На даний товар діє максимальна знижка в ${percent}% (${maxDiscount} грн)`
+  const y = document.getElementById('onLoadResult');
+  if (input.value > maxDiscount && y.innerHTML === onLoadResult) {
+    y.innerHTML = overMaxDiscount;
+  } else if (input.value < maxDiscount) {
+    y.innerHTML = onLoadResult;
+  }
+});
+
+input.addEventListener('input', () => {
+  let noBonusRes = 'Зареєструйся, та отримай +50 бонусів'
+  const x = document.getElementById('onLoadResult');
+  if (input.value == 0 && x.innerHTML === onLoadResult) {
+    x.innerHTML = noBonusRes
+  } else if (input.value !== 0) {
+    x.innerHTML = onLoadResult
+  }
+})
+
+input.addEventListener('change', () => {
+  let notEnoughBonus = `Недостатньо бонусів на рахунку. Доступно ${bonusValue} бонусів`
+  const z = document.getElementById('onLoadResult');
+  if (input.value > bonusValue && z.innerHTML === onLoadResult) {
+    z.innerHTML = notEnoughBonus;
+  } else if (input.value < bonusValue) {
+    z.innerHTML = onLoadResult;
+  }
+})
 
 
 // input.addEventListener('input', () => {
 //   const x = document.getElementById('onLoadResult');
 
-//   let overMaxDiscount = 'Over Max Discount'
+//   let overMaxDiscount = `На даний товар діє максимальна знижка в 75% (${maxDiscount} грн)`
 //   if (input.value > maxDiscount && x.innerHTML === onLoadResult) {
 //     x.innerHTML = overMaxDiscount;
 //   } else if (input.value < maxDiscount) {
 //     x.innerHTML = onLoadResult;
 //   } 
 
-//   let noBonusRes = 'Your Balance is 0'
+//   let noBonusRes = 'Зареєструйся, та отримай +50 бонусів'
 //   if (input.value == 0 && x.innerHTML === onLoadResult) {
 //     x.innerHTML = noBonusRes
 //   } else if (input.value !== 0) {
 //     x.innerHTML = onLoadResult
 //   }
 
-//   let notEnoughBonus = 'Not Enough Bonuses'
+//   let notEnoughBonus = `Недостатньо бонусів на рахунку. Доступно ${bonusValue}`
 //   if (input.value > bonusValue && x.innerHTML === onLoadResult) {
 //     x.innerHTML = notEnoughBonus;
 //   } else if (input.value < bonusValue) {
