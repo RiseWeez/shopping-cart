@@ -37,9 +37,9 @@ for (i = 0; i < coll.length; i++) {
 
 // range slider
 
-let bonusValue = 1000;
-let maxDiscount = 1500;
-let itemPrice = 2000;
+let bonusValue = 50;
+let maxDiscount = 75;
+let itemPrice = 100;
 let onLoadResult = 'Потягни повзунок та обери знижку'
 
 
@@ -47,6 +47,28 @@ document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replac
 document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('onLoadResult').innerHTML = onLoadResult
 
+const slider = document.querySelector('.range')
+const thumb = document.querySelector('.slider-thumb')
+const track = document.querySelector('.bonus-value-track')
+let discountTrack = document.querySelector('.discount-track')
+discountTrack.style.width = `${maxDiscount}%`
+
+const updateSlider = (value) => {
+  thumb.style.left = `${value}%`
+  thumb.style.transform = `translate(-${value}%, -50%)`
+  track.style.width = `${bonusValue}%`
+
+  if (discountTrack.style.width < track.style.width) {
+    track.style.width = `${maxDiscount}%`
+  } else {
+    track.style.width = `${bonusValue}%`
+  }
+}
+
+slider.oninput = (e) =>
+  updateSlider(e.target.value)
+
+updateSlider(50) // Init value
 
 function rangeSlide(value) {
   const priceDiff = itemPrice - value;
@@ -93,6 +115,9 @@ bonusValueInput.onchange = function changeBonusValue() {
 };
 
 const input = document.querySelector('.range');
+let percent = Math.floor((maxDiscount / itemPrice) * 100)
+let test = percent + '%'
+document.getElementById('collapsible-text__color').innerHTML = test
 
 // input.addEventListener('input', overMaxDiscountFunc); 
 // input.addEventListener('change', noBonusResFunc);
@@ -129,7 +154,6 @@ const input = document.querySelector('.range');
 // }
 
 input.addEventListener('change', () => {
-  let percent = Math.floor((maxDiscount / itemPrice) * 100)
   let overMaxDiscount = `На даний товар діє максимальна знижка в ${percent}% (${maxDiscount} грн)`
   const y = document.getElementById('onLoadResult');
   if (input.value > maxDiscount && y.innerHTML === onLoadResult) {

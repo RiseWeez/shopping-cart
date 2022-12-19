@@ -81,7 +81,7 @@
       </div>
       <button type="button" class="collapsible">
         <span>Оплата бонусами до</span>
-        <span class="collapsible-text__color">99%</span>
+        <span class="collapsible-text__color" id="collapsible-text__color">99%</span>
       </button>
       <div class="content">
         <div class="range-slider">
@@ -101,7 +101,7 @@
               <div>
               <span class="selectedBonusesInp">Обрані бонуси</span>
             </div>
-              <input type="text" id="bonusValueInput" name="bonusValueInput" class="bonusValueInputInp" value="0">
+              <input type="text" id="bonusValueInput" name="bonusValueInput" class="bonusValueInputInp" value="1000">
             </div>
             <div class="equal-price">
               <span class="eq-price">=</span>
@@ -120,9 +120,14 @@
             <span id="noBonusRes"></span>
             <span id="overMaxDiscount"></span> -->
           </div>
-          <div class="slider" id="slider">
-            <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="999999"
+          <div class="slider-wrap" id="slider-wrap">
+            <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="0"
               onchange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
+              <div class="track">
+                <div class="discount-track"></div>
+                <div class="bonus-value-track"></div>
+              </div>
+              <div class="slider-thumb"></div>
           </div>
           <span class="discount-modal__zero-bonus">
             <span id="zeroBonus">0</span>
