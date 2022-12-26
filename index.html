@@ -40,7 +40,7 @@
             Замовте сьогодні - отримайте<strong class="cart-cashback__bonuses"> + 10 бонусів</strong>
             за покупку
           </div>
-      </div>
+      
       </header>
       <div class="cart-order__content">
         <div class="cart-item">
@@ -101,7 +101,7 @@
               <div>
               <span class="selectedBonusesInp">Обрані бонуси</span>
             </div>
-              <input type="text" id="bonusValueInput" name="bonusValueInput" class="bonusValueInputInp" value="1000">
+              <input type="text" id="bonusValueInput" name="bonusValueInput" class="bonusValueInputInp" value="0">
             </div>
             <div class="equal-price">
               <span class="eq-price">=</span>
@@ -121,7 +121,7 @@
             <span id="overMaxDiscount"></span> -->
           </div>
           <div class="slider-wrap" id="slider-wrap">
-            <input id="bonusSlider" class="range" type="range" name "" value="0" min="0" max="0"
+            <input id="bonusSlider" class="range" type="range" value="0" min="0" max="0"
               onchange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
               <div class="track">
                 <div class="discount-track"></div>
@@ -132,7 +132,7 @@
           <span class="discount-modal__zero-bonus">
             <span id="zeroBonus">0</span>
           </span>
-            <span class="discount-modal__price">
+            <span class="maxDiscount__price" id="maxDiscountNum">
               <span id="maxDiscount"></span>
               
               <!-- <sup class="discount-modal__currency">ГРН</sup> -->
@@ -143,13 +143,14 @@
       <div class="cart-order__footer">
         <div class="cart-order__footer-content">
           <div class="discount-modal_total">
-            <span class="discount-final-title">Всього до сплати: </span>
+            <span class="discount-final-title">Всього: </span>
             <strong class="discount-final-price"><span id="finalPrice"></span>
               <sup class="discount-modal__currency">ГРН</sup>
             </strong>
           </div>
           <button id="toCheckoutBtn" class="toCheckoutBtn">Оформити замовлення</button>
         </div>
+      </div>
       </div>
     </div>
   </div>

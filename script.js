@@ -37,8 +37,8 @@ for (i = 0; i < coll.length; i++) {
 
 // range slider
 
-let bonusValue = 50;
-let maxDiscount = 75;
+let bonusValue = 40;
+let maxDiscount = 60;
 let itemPrice = 100;
 let onLoadResult = 'Потягни повзунок та обери знижку'
 
@@ -47,11 +47,16 @@ document.getElementById('maxDiscount').innerHTML = maxDiscount.toString().replac
 document.getElementById('itemPrice').innerHTML = itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 document.getElementById('onLoadResult').innerHTML = onLoadResult
 
-const slider = document.querySelector('.range')
+let slider = document.querySelector('.range')
 const thumb = document.querySelector('.slider-thumb')
 const track = document.querySelector('.bonus-value-track')
 let discountTrack = document.querySelector('.discount-track')
 discountTrack.style.width = `${maxDiscount}%`
+
+let target = document.querySelectorAll('input[type="range"]')[0];
+target.max = itemPrice;
+target.value = bonusValue;
+
 
 const updateSlider = (value) => {
   thumb.style.left = `${value}%`
@@ -65,10 +70,10 @@ const updateSlider = (value) => {
   }
 }
 
-slider.oninput = (e) =>
+slider.oninput = (e) => 
   updateSlider(e.target.value)
 
-updateSlider(50) // Init value
+updateSlider(bonusValue) // Init value
 
 function rangeSlide(value) {
   const priceDiff = itemPrice - value;
@@ -85,39 +90,42 @@ function rangeSlide(value) {
 const range = document.querySelector('.range');
 const field = document.querySelector('.bonusValueInputInp');
 
+field.value = bonusValue
+
 range.addEventListener('change', function (e) {
   field.value = e.target.value;
 });
 field.addEventListener('change', function (e) {
   range.value = e.target.value;
+  updateSlider(e.target.value)
 });
 
-window.onload = function setSliderRange() {
-  let target = document.querySelectorAll('input[type="range"]')[0];
-  target.value = bonusValue;
-  let min = target.min;
-  target.max = itemPrice;
+// window.onload = function setSliderRange() {
+//   let target = document.querySelectorAll('input[type="range"]')[0];
+//   target.value = bonusValue;
+//   let min = target.min;
+//   target.max = itemPrice;
 
-  target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%';
-  target.style.backgroundColor = '#ea373785'
-};
+//   target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%';
+//   target.style.backgroundColor = '#ea373785'
+// };
 
-bonusValueInput.onchange = function changeBonusValue() {
-  let bonusValueInput = document.getElementById('bonusValueInput').value;
-  let handleValue = +bonusValueInput
+// bonusValueInput.onchange = function changeBonusValue() {
+//   let bonusValueInput = document.getElementById('bonusValueInput').value;
+//   let handleValue = +bonusValueInput
 
-  let target = document.querySelectorAll('input[type="range"]')[0];
-  target.value = handleValue;
-  let min = 0;
-  target.max = itemPrice;
+//   let target = document.querySelectorAll('input[type="range"]')[0];
+//   target.value = handleValue;
+//   let min = 0;
+//   target.max = itemPrice;
 
-  target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%'; 
-};
+//   target.style.backgroundSize = ((bonusValue - min) * 100) / (itemPrice - min) + '% 100%'; 
+// };
 
 const input = document.querySelector('.range');
 let percent = Math.floor((maxDiscount / itemPrice) * 100)
-let test = percent + '%'
-document.getElementById('collapsible-text__color').innerHTML = test
+let collPerc = percent + '%'
+document.getElementById('collapsible-text__color').innerHTML = collPerc
 
 // input.addEventListener('input', overMaxDiscountFunc); 
 // input.addEventListener('change', noBonusResFunc);
