@@ -500,7 +500,7 @@ input::-webkit-inner-spin-button {
   overflow: hidden;
   background-color: rgb(255, 255, 255);
   margin-bottom: 5px;
-  padding: 16px;
+  padding: 16px 16px 20px 16px;
 }
 
 .slider-wrap {
@@ -543,7 +543,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-.bonus-value-track {
+.bonusValue-track {
   width: 0;
   height: 100%;
   background: #00a93e;
@@ -939,6 +939,7 @@ input[type="range"]::-ms-track {
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
   color: #8a8a8a;
+  position: absolute;
 }
 
 .discount-modal__zero-bonus {
@@ -954,6 +955,7 @@ input[type="range"]::-ms-track {
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
   color: #8a8a8a;
+  position: absolute;
 }
 
 .discount-modal__currency {
@@ -1146,7 +1148,7 @@ input[type="range"]::-ms-track {
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     margin-bottom: 5px;
-    padding: 0px;
+    padding: 0px 0px 10px 0px;
   }
 
   .toCheckoutBtn {

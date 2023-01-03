@@ -116,27 +116,23 @@
           </div>
           <div id="results" class="result">
             <span id="onLoadResult"></span>
-            <!-- <span id="notEnoughBonus"></span>
-            <span id="noBonusRes"></span>
-            <span id="overMaxDiscount"></span> -->
           </div>
           <div class="slider-wrap" id="slider-wrap">
             <input id="bonusSlider" class="range" type="range" value="0" min="0" max="0"
               onchange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
               <div class="track">
                 <div class="discount-track"></div>
-                <div class="bonus-value-track"></div>
+                <div class="bonusValue-track"></div>
               </div>
               <div class="slider-thumb"></div>
+              <span class="discount-modal__zero-bonus">
+                <span id="zeroBonus">0</span>
+              </span>
+              <span class="maxDiscount__price" id="maxDiscountNum">
+                <span id="maxDiscount"></span>
+              </span>
           </div>
-          <span class="discount-modal__zero-bonus">
-            <span id="zeroBonus">0</span>
-          </span>
-            <span class="maxDiscount__price" id="maxDiscountNum">
-              <span id="maxDiscount"></span>
-              
-              <!-- <sup class="discount-modal__currency">ГРН</sup> -->
-            </span>
+           
           <!-- Slider -->
         </div>
       </div>
